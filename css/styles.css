@@ -1,0 +1,135 @@
+/*Estilos generales*/
+body{
+    background-color: lightgreen;
+    font-family: 'Lato',sans-serif;
+}
+footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+header{
+    background-color: red;
+    height: 64px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+main{
+    width: 1366px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: 64px;
+    z-index: 1;
+}
+/*Estilos barra de navegación*/
+.header-nav{
+    background-color: #551574;
+    height: 64px;
+    width: 1366px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+}
+.logo img{
+    width: 260px;
+    height: 45px;
+}
+.nav-menu-seccion1-link{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+.nav-menu-seccion1{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style-type: none;
+   margin: 0;
+   padding:0;
+}
+.nav-menu-seccion2-link{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+.nav-menu-seccion2{
+    display: flex;
+    padding:0;
+    margin: 0;
+    list-style-type: none;
+    gap: 15px;
+    align-items: center;
+}
+.nav-menu-seccion2-item-supp{
+    display:flex;
+    gap: 5px;
+    align-items: center;
+}
+.container1{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    width: 357px;
+    justify-content: space-between;
+    margin-left: 10px;
+}
+.container2{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 934px;
+    margin-right: 25px;
+}
+/*estilos barra de busqueda*/
+.search-container{
+    position: relative;
+}
+.btn{
+    position: absolute;
+    width: 44px;
+    height: 50px;
+    top:0;
+    right: 0;
+    text-align: center;
+    color: #9E5CBF;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.btn i{
+    vertical-align: middle;
+    font-size: 28px;
+    line-height: 50px;
+    transition: all .7s ease;
+}
+.search-container input{
+    padding: 0;
+    border-color:#9E5CBF;
+    border-width: 2px;
+    width: 0px;
+    height: 50px;
+    padding: 0 40px;
+    border-radius: 25px;
+    outline: none;
+    box-sizing: border-box;
+    transition: all .7s ease;
+}
+.search-container:hover input{
+    width: 250px;
+}
+.search-container:hover i{
+    transform: rotate(-360deg);
+}
+::placeholder{
+    color: #939393;
+}
+.nav-icon{
+    font-size: 30px;
+}
