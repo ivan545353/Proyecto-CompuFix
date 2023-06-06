@@ -1,6 +1,8 @@
 /*Estilos generales*/
+*{
+    box-sizing: border-box;
+}
 body{
-    background-color: lightgreen;
     font-family: 'Lato',sans-serif;
 }
 footer{
@@ -9,27 +11,21 @@ footer{
     width: 100%;
 }
 header{
-    background-color: red;
+    background-color: #551574;
     height: 64px;
-    width: 100%;
+    width: 100vw;
     position: fixed;
     top: 0;
     z-index: 100;
+    border-bottom:1px solid #2E0B40;
 }
-main{
-    width: 1366px;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
-    margin-top: 64px;
-    z-index: 1;
-}
+
 /*Estilos barra de navegación*/
 .header-nav{
     background-color: #551574;
     height: 64px;
-    width: 1366px;
-    margin: auto;
+    max-width: 1366px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,6 +33,10 @@ main{
     top: 0;
     left: 50%;
     transform: translate(-50%);
+    border-left:1px solid #2E0B40;
+    border-right:1px solid #2E0B40;
+    border-bottom:1px solid #2E0B40;
+    flex-direction: row;
 }
 .logo img{
     width: 260px;
@@ -88,6 +88,26 @@ main{
     width: 934px;
     margin-right: 25px;
 }
+ .nav-menu-item-container{
+    padding-top: 15px;
+    padding-bottom:15px;
+    cursor: pointer;
+    position: relative;
+}
+.nav-menu-item-container::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-bottom: solid 3px red;
+    opacity: 0;
+}
+.nav-menu-item-container:hover::after{
+    opacity: 1;
+    animation: myAnim 400ms ease 0s 1 normal forwards;
+}
+
 /*estilos barra de busqueda*/
 .search-container{
     position: relative;
@@ -132,4 +152,30 @@ main{
 }
 .nav-icon{
     font-size: 30px;
+}
+
+/*Estilos main*/
+.main-container{
+    width: 100vw;
+    margin-top: 64px;
+    justify-content: center;
+    display: flex;
+}
+main{
+    max-width: 1366px;
+    width: 100%;
+    z-index: 1;
+}
+
+
+
+/*Keyframes*/
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }
