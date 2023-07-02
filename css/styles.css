@@ -1,8 +1,15 @@
 /**** Estilos generales ****/
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
-  
+
   body {
     font-family: 'Lato', sans-serif;
   }
@@ -16,7 +23,7 @@
   header {
     position: fixed;
     top: 0;
-    z-index: 100;
+
     height: 64px;
     width: 100%;
     background-color: #551574;
@@ -39,76 +46,7 @@
     width: 100%;
     max-width: 1366px;
     background-color: #551574;
-    z-index: 999;
-  }
-  
-  /**** Icono menu hamburguesa ****/
-  .menu-icon-container{
-    display: relative;
-    z-index: 999;
-  }
-  #checkbox {
-    display: none;
-  }
-  
-  .toggle {
-    position: relative;
-    width: 35px;
-    min-width: 40px;
-    cursor: pointer;
-    margin-left:1rem;
-    display: none;
-    height: calc(4px * 3 + 11px * 2);
-  }
-  
-  .bar {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 4px;
-    border-radius: calc(4px / 2);
-    background: #fff;
-    color: inherit;
-    opacity: 1;
-    transition: none 0.35s cubic-bezier(.5,-0.35,.35,1.5) 0s;
-  }
-  
-  /***** Animación Icono*****/
-  
-  .bar--top {
-    bottom: calc(50% + 11px + 4px/ 2);
-    transition-property: bottom,transform;
-    transition-delay: calc(0s + 0.35s),0s;
-  }
-  
-  .bar--middle {
-    top: calc(50% - 4px/ 2);
-    transition-property: opacity;
-    transition-delay: calc(0s + 0.35s);
-  }
-  
-  .bar--bottom {
-    top: calc(50% + 11px + 4px/ 2);
-    transition-property: top,transform;
-    transition-delay: calc(0s + 0.35s),0s;
-  }
-  
-  #checkbox:checked + .toggle .bar--top {
-    bottom: calc(50% - 4px/ 2);
-    transform: rotate(135deg);
-    transition-delay: 0s,calc(0s + 0.35s);
-  }
-  
-  #checkbox:checked + .toggle .bar--middle {
-    opacity: 0;
-    transition-duration: 0s;
-    transition-delay: calc(0s + 0.35s);
-  }
-  
-  #checkbox:checked + .toggle .bar--bottom {
-    top: calc(50% - 4px/ 2);
-    transform: rotate(225deg);
-    transition-delay: 0s,calc(0s + 0.35s);
+    z-index: 1;
   }
   
   .nav-menu-seccion2-link {
@@ -146,6 +84,101 @@
     margin-right: 10px;
   }
   
+  /**** estilos menu hamburguesa ****/
+  .menu-icon-container{
+    display: relative;
+    z-index: 99;
+  }
+  #checkbox {
+    display: none;
+  }
+  
+  .toggle {
+    position: relative;
+    width: 35px;
+    min-width: 40px;
+    cursor: pointer;
+    margin-left:1rem;
+    display: none;
+    height: calc(4px * 3 + 11px * 2);
+  }
+  
+  .bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: calc(4px / 2);
+    background: #fff;
+    color: inherit;
+    opacity: 1;
+    transition: none 0.35s cubic-bezier(.5,-0.35,.35,1.5) 0s;
+  }
+  
+  .bar--top {
+    bottom: calc(50% + 11px + 4px/ 2);
+    transition-property: bottom,transform;
+    transition-delay: calc(0s + 0.35s),0s;
+  }
+  
+  .bar--middle {
+    top: calc(50% - 4px/ 2);
+    transition-property: opacity;
+    transition-delay: calc(0s + 0.35s);
+  }
+  
+  .bar--bottom {
+    top: calc(50% + 11px + 4px/ 2);
+    transition-property: top,transform;
+    transition-delay: calc(0s + 0.35s),0s;
+  }
+  
+  .toggle.active .bar--top {
+    bottom: calc(50% - 4px/ 2);
+    transform: rotate(135deg);
+    transition-delay: 0s, calc(0s + 0.35s);
+  }
+  
+  .toggle.active .bar--middle {
+    opacity: 0;
+    transition-duration: 0s;
+    transition-delay: calc(0s + 0.35s);
+  }
+  
+  .toggle.active .bar--bottom {
+    top: calc(50% - 4px/ 2);
+    transform: rotate(225deg);
+    transition-delay: 0s, calc(0s + 0.35s);
+  }
+
+  .flex-container.active{
+    left: 0;
+  }
+
+  .menu-open{
+    overflow: hidden;
+  }
+
+  .overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index:98 ;
+    display: none;
+  }
+  
+  body.menu-open .overlay{
+    display: block;
+  }
+
+  .sidebar-icon{
+    font-size: 1em;
+    display:none;
+  }
+
   /**** Estilos barra de búsqueda ****/
   .search-container {
     position: relative;
@@ -223,6 +256,7 @@
     width: 100%;
     max-width: 1366px;
     background-color: #fff;
+    z-index: 98;
   }
   
   .flex-container-item {
@@ -231,8 +265,8 @@
     list-style-type: none;
     height: 44px;
     cursor: pointer;
-    margin-left: 2em;
-    margin-right: 2em;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
   
   .flex-container-item::before {
@@ -255,9 +289,25 @@
   .flex-container-link {
     text-decoration: none;
     color: #2E0B40;
-    margin-top: 12.5px;
+    display: flex;
+    align-items: center;
   }
   
+  .items-container{
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+  }
+  .login{
+    display: none;
+  }
+  .support{
+    display: none;
+  }
+
+  .link-arrow{
+    display: none;
+  }
   /**** Estilos main ****/
   .main-container {
     justify-content: center;
@@ -269,7 +319,6 @@
   main {
     max-width: 1366px;
     width: 100%;
-    z-index: 1;
   }
   
   /**** Estilos footer ****/
@@ -278,7 +327,7 @@
   }
   /**** Media queries ****/
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    .soporte-text {
+    .support-text {
       display: none;
     }
   }
@@ -315,15 +364,17 @@
     }
     
     .flex-container{
-      position: absolute;
+      position: fixed;
       flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
       background-color: #551574;
       height: 100vh;
-      width: 75vw;
-      left: 0;
-      top: 0;
-      box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
-      display: none;
+      max-width: 338px;
+      left:-338px;
+      top:0;
+      transition: 0.5s;
+    
     }
   
     .flex-container-searchbar {
@@ -333,14 +384,97 @@
 
     .flex-container-link{
       color: #fff;
+      height: 100%;
+      width: 100%;
+      justify-content: flex-start;
+      margin-left: 1rem;
+      margin-right: 1rem;
     }
+    
+    .link-arrow{
+      display: block;
+      font-size: 1.5rem;
+      width: 1.5rem;
+      transform: rotate(90deg);
+      transition: transform .3s ease;
+    }
+    /*
+    .flex-container-item:hover .arrow-down{
+      transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      transition: transform .3s ease;
+    }*/
    
+    .flex-container-item{
+      font-size: 20px;
+      margin:0;
+      letter-spacing: 2px;
+      align-items: center;
+      border-top: solid 1px #2E0B40;
+      width: 100%;
+      height: 3rem;
+    }
 
+    .items-container{
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      margin-top: 4rem;
+    }
+
+    .flex-container-item::before{
+      display: none;
+    }
+    .flex-container-item:hover{
+      background-color: #72428A;
+    }
+
+    .login{
+      display: flex;
+    }
+    
+    .support{
+      display: flex;
+      border-bottom: solid 1px #2E0B40;
+    }
+    .sidebar-icon{
+      display: block;
+    }
   }
 
   @media screen and (max-width:420px) {
-    .flex-container{
-      width: 100vw;
-    }
+    
   }
+/* acomodar despues*/
+.arrow-down{
+  transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    transition: transform .3s ease;
+}
+
+.sub-menu{
+  margin-top: 0;
+  background-color: #72428A;
+  display: none;
+ }
   
+.show{
+  display: flex;
+}  
+
+
+#sub-menu-item{
+  justify-content: center;
+}
+
+#flex-container-link{
+  justify-content:space-between ;
+}
+
+.flex-container-link-text{
+  margin: auto;
+}
+
+

@@ -21,13 +21,13 @@
         <nav>
             <div class="header-nav" id="header-nav">
                 <div class="menu-icon-container">
-                    <input type="checkbox" id="checkbox">
                     <label for="checkbox" class="toggle" id="mobile-toggle">
                         <div class="bar bar--top"></div>
                         <div class="bar bar--middle"></div>
                         <div class="bar bar--bottom"></div>
                     </label>
                 </div>
+                <div class="overlay"></div><!--Overlay cuando el menu esta abierto-->
                 <!--Logo-->
                 <div class="logo-container">
                     <a href="#">
@@ -58,7 +58,7 @@
                                 <i class="fa-solid fa-headset nav-icon"></i>
                             </a>   
                             <a href="#" class="nav-menu-seccion2-link">                
-                                <span class="soporte-text">Soporte</span>  
+                                <span class="support-text">Soporte</span>  
                             </a>      
                         </li>
                         <svg width="3" height="23" viewBox="0 0 3 23" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg-nav-1">
@@ -109,18 +109,68 @@
             <!--Barra de navegación secundaria-->
             <div class="header-2" id="header-2">
                 <div class="flex-container-searchbar"></div>
-                <div class="flex-container visible" id="flex-container">
-                        <div class="flex-container-item">
-                                <a href="#" class="flex-container-link">Arma tu PC</a>
-                        </div>
-                        <div class="flex-container-item">
-                                <a href="#" class="flex-container-link">Arregla tu PC</a>
-                        </div>
-                        <div class="flex-container-item">
-                                <a href="#" class="flex-container-link">Componentes</a>
-                        </div>
-                        <div class="flex-container-item">
-                                <a href="#" class="flex-container-link">Perifericos</a>
+                <div class="flex-container" id="flex-container">
+                        <div class="items-container">
+                            <div class="flex-container-item">
+                                    <a href="#" class="flex-container-link">
+                                        <i class="fa-solid fa-computer sidebar-icon"></i>
+                                        <span class="flex-container-link-text">Arma tu PC</span>
+                                    </a>
+                            </div>
+                            <div class="flex-container-item">
+                                    <a href="#" class="flex-container-link">
+                                        <i class="fa-solid fa-screwdriver-wrench sidebar-icon"></i>
+                                        <span class="flex-container-link-text"> Arregla tu PC</span>
+                                    </a>
+                            </div>
+                            <div class="flex-container-item sub-btn">
+                                    <a href="#" class="flex-container-link"  id="flex-container-link">
+                                        <i class="fa-solid fa-desktop sidebar-icon"></i>
+                                        Computación
+                                        <div class="link-arrow">
+                                            <i class="fa-solid fa-angle-up" id="arrow"></i>
+                                        </div>
+                                    </a>
+                            </div>
+                            <div class="items-container sub-menu" id="sub-menu">
+                                <a href="#" class="sub-item flex-container-item flex-container-link" id="sub-menu-item">Almacenamiento</a>
+                                <a href="#" class="sub-item flex-container-item flex-container-link" id="sub-menu-item">Microprocesadores</a>
+                                <a href="#" class="sub-item flex-container-item flex-container-link" id="sub-menu-item">Motherboard</a>
+                                <a href="#" class="sub-item flex-container-item flex-container-link" id="sub-menu-item">Memorias RAM</a>
+                                <a href="#" class="sub-item flex-container-item flex-container-link" id="sub-menu-item">Gabinetes</a>
+                                <a href="#" class="sub-item flex-container-item flex-container-link" id="sub-menu-item">Fuentes</a>
+                                <a href="#" class="sub-item flex-container-item flex-container-link" id="sub-menu-item">Refrigeración</a>
+                            </div>
+                            <div class="flex-container-item">
+                                    <a href="#" class="flex-container-link"  id="flex-container-link">
+                                        <i class="fa-solid fa-microphone sidebar-icon"></i>
+                                        Perifericos
+                                        <div class="link-arrow">
+                                            <i class="fa-solid fa-angle-up"></i>
+                                        </div>
+                                    </a>
+                            </div>
+                            <div class="flex-container-item">
+                                <a href="#" class="flex-container-link"  id="flex-container-link">
+                                    <i class="fa-brands fa-usb sidebar-icon"></i>
+                                    Accesorios
+                                    <div class="link-arrow">
+                                        <i class="fa-solid fa-angle-up"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="flex-container-item login">
+                                <a href="#" class="flex-container-link">
+                                    <i class="fa-regular fa-user nav-icon sidebar-icon"></i>
+                                    <span class="flex-container-link-text">Iniciar Sesión</span>
+                                </a>
+                            </div>
+                            <div class="flex-container-item support">
+                                <a href="#" class="flex-container-link">
+                                    <i class="fa-solid fa-headset nav-icon sidebar-icon"></i>
+                                    <span class="flex-container-link-text">Soporte</span>
+                                </a>
+                            </div>
                         </div>
                 </div>
             </div>
@@ -158,7 +208,7 @@
             <h1>hola mundo</h1>
         </main>
     </div>
-
+    
     <footer>
         <h1>que onda man</h1>
     </footer>

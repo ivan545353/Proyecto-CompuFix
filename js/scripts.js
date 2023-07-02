@@ -1,22 +1,33 @@
-$(document).ready(function() {
-  var $searchInput = $('.search-container-input');
-  var isResizing = false;
+// Variables globales
+var $searchInput, isResizing, $logoSVG, originalWidth, originalViewBox, checkbox, menu;
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Inicialización de variables globales
+  $searchInput = $('.search-container-input');
+  isResizing = false;
+  $logoSVG = $('.logo');
+  originalWidth = $logoSVG.attr('width');
+  originalViewBox = $logoSVG.attr('viewBox');
+  checkbox = document.getElementById('checkbox');
+  menu = document.getElementById('flex-container');
 
   // Función para cambiar la posición de la barra de búsqueda en el DOM
   function moveNavContainer() {
-    var windowWidth = $(window).width();
-    var $searchContainer = $(".search-container"); // Contenedor de la barra de búsqueda
-    var $flexContainer = $(".flex-container-searchbar"); // Contenedor donde debe ir la barra de búsqueda
-    var $originalContainer = $(".search-container-returnjs"); // Contenedor original de la barra de búsqueda
-    var $flexcontainer2 = $(".flex-container"); //contenedor de la barra de navegación
-    var $originalflexcontainer = $(".header-2"); //contenedor original de la barra de navegación
-    var $destinoflexcontainer = $(".header-nav"); //contenedor donde debe ir la barra de navegación
+    let windowWidth = window.innerWidth;
+    let searchContainer = document.querySelector(".search-container");
+    let flexContainer = document.querySelector(".flex-container-searchbar");
+    let originalContainer = document.querySelector(".search-container-returnjs");
+    
+    let flexContainer2 = document.querySelector(".flex-container");
+    let originalFlexContainer = document.querySelector(".header-2");
+    let destinoflexcontainer = document.querySelector(".header-nav");
+
     if (windowWidth < 768) {
-      $searchContainer.detach().appendTo($flexContainer);
-      $flexcontainer2.detach().appendTo($destinoflexcontainer);
+      flexContainer.appendChild(searchContainer);
+      destinoflexcontainer.appendChild(flexContainer2);
     } else {
-      $searchContainer.detach().appendTo($originalContainer);
-      $flexcontainer2.detach().appendTo($originalflexcontainer);
+      originalContainer.appendChild(searchContainer);
+      originalFlexContainer.appendChild(flexContainer2);
     }
   }
 
@@ -35,53 +46,74 @@ $(document).ready(function() {
     }
   }
 
-  // Variables para el logo SVG
-  var $logoSVG = $('.logo');
-  var originalWidth = $logoSVG.attr('width');
-  var originalViewBox = $logoSVG.attr('viewBox');
-
-  // Media query a monitorear
+  // Media query para monitorear cuando el ancho de pantalla es menor a 768px
   var mediaQuery = window.matchMedia("(max-width: 768px)");
 
-  // Funcion a ejecutar en caso de que la media query sea true
+  // Función a ejecutar en caso de que la media query sea true
   function handleMediaQueryChange(mediaQuery) {
     if (mediaQuery.matches) {
       moveNavContainer();
       updateLogoSize();
     } else {
-
+      // Código para casos donde la media query sea false
     }
   }
 
   // Ejecuta la función inicialmente para verificar el estado actual de la media query
   handleMediaQueryChange(mediaQuery);
 
-
   // Añade un listener al evento de cambio en la media query
   mediaQuery.addEventListener('change', handleMediaQueryChange);
 
-  //funcion para mostrar los items de la barra de navegacion cuando cambie el tamaño de pantalla
+  // Función para mostrar los items de la barra de navegación cuando cambie el tamaño de pantalla
   function checkWindowSize() {
     if (window.innerWidth > 767) {
       menu.style.display = 'flex';
     }
   }
 
-
-  //Menu de hamburguesa
-  var checkbox = document.getElementById('checkbox');
-  var menu = document.getElementById('flex-container');
-
-
-  checkbox.addEventListener('click', function() {
-    if (checkbox.checked) {
-      menu.style.display = 'flex';
-    } else {
-      menu.style.display = 'none';
-    }
-  })
-
   checkWindowSize();
+
+//funcion del menu de hamburguesa
+function toggleMenu() {
+  // Obtiene las referencias a los elementos del DOM
+  const toggle = document.getElementById('mobile-toggle');
+  const menu = document.getElementById('flex-container');
+  const body = document.body;
+  // Función que se ejecuta cuando se hace clic fuera del menú
+  const handleClickOutsideMenu = (event) => {
+    if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+      toggle.classList.remove('active');
+      menu.classList.remove('active');
+      body.classList.remove('menu-open');
+    }
+  };
+
+  // Asigna la función al evento 'click' del botón de alternancia
+  toggle.onclick = () => {
+    toggle.classList.toggle('active');
+    menu.classList.toggle('active');
+    body.classList.toggle('menu-open');
+  };
+
+  // Agrega el evento 'click' al documento, para detectar los clics fuera del menú
+  document.addEventListener('click', handleClickOutsideMenu);
+}
+toggleMenu();
+
+function toggleSubMenu() {
+  var subMenu = document.getElementById("sub-menu");
+  var linkArrow = document.getElementById("arrow");
+
+  subMenu.classList.toggle("show");
+  linkArrow.classList.toggle("arrow-down");
+}
+
+var subMenuItem = document.getElementById("flex-container-link");
+subMenuItem.addEventListener("click", toggleSubMenu);
+
+
+
 
   // Evento de redimensionamiento de ventana
   $(window).resize(function() {
@@ -97,5 +129,4 @@ $(document).ready(function() {
       }, 100);
     }
   });
-
 });
