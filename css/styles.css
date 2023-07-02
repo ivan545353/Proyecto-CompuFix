@@ -174,7 +174,7 @@
     display: block;
   }
 
-  .sidebar-icon{
+  #sidebar-icon{
     font-size: 1em;
     display:none;
   }
@@ -438,7 +438,7 @@
       display: flex;
       border-bottom: solid 1px #2E0B40;
     }
-    .sidebar-icon{
+    #sidebar-icon{
       display: block;
     }
   }
